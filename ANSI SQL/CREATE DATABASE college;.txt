@@ -1,0 +1,64 @@
+CREATE DATABASE college;
+USE college;
+
+CREATE  TABLE student (
+rollno int primary key,
+name varchar(50), marks int not null, grade varchar(1), city varchar(30)
+);
+
+INSERT INTO student(rollno, name, marks, grade, city)
+VALUES
+(101,"anil", 78, "c","pune"),
+(102, "bhumika", 93, "a", "Mumbai"),
+(103, "chetna", 85, "b" , "Mumbai");
+
+SELECT * FROM student;
+SELECT NAME, city FROM student;
+select distinct city from student;
+
+select*from student where marks > 80 AND  city = "Mumbai";
+select*from student where marks BETWEEN 80 AND  90;
+select*from student where city NOT IN ("Delhi", "Mumbai");
+
+select*from student LIMIT 2;
+select*from student where marks > 90 LIMIT 2;    
+
+select*from student order by marks asc ;
+select*from student order by marks desc;
+select*from student order by marks desc limit 2 ;
+
+select marks from student;
+select avg(marks) from student;
+select count(name) from student;
+
+select city from student group by city;
+select city, count(name)  from student group by city;
+select city, avg(marks)  from student group by city;
+
+select city, avg(marks)  from student 
+group by city
+order by avg(marks) desc;
+
+create database customer;
+use customer;
+
+create table payment(
+cus_id int primary key, name varchar(45), mode  varchar(40),  
+city varchar(30));
+
+insert into payment(cus_id, name, mode, city)
+values 
+(101, "oliva barrett", "netbanking", "portland"),
+(102, "ethan", "credit card", "miami"),
+(103, "maya hemandez", "credit card", "seattle"),
+(104, "liam donovan", "netbanking", "denver"),
+(105, "sophia", "credit card", "new orlands"),
+(106, "caleb foster", "debit card", "minnepoils"),
+(107, " aval patel", " debit card", "phoneix"),
+(108, " Lucas", " netbanking", "boston"),
+(109, "isbellia", "netbanking", "nashville"),
+(110, " jackson", "credit card", "boston"); 
+   
+   select * from payment;
+  select mode from payment group by mode;
+  select mode, count(name)  from payment group by  mode;
